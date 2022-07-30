@@ -15,25 +15,21 @@
 // You should have received a copy of the GNU General Public License
 // along with Shuttle.  If not, see <http://www.gnu.org/licenses/>.
 
-import 'package:equatable/equatable.dart';
-import 'package:shuttle/features/domain/entities/driver.dart';
-import 'package:shuttle/features/domain/entities/passenger.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:shuttle/features/domain/entities/job.dart';
+import 'package:shuttle/features/domain/entities/route.dart';
+import 'package:shuttle/features/domain/entities/user.dart';
 import 'package:shuttle/features/domain/entities/vehicle.dart';
-import 'package:shuttle/features/domain/entities/wallet.dart';
 
-class User extends Equatable {
+class Driver extends User {
 
-  final String name;
-  final String phoneNumber;
-  final Wallet wallet = Wallet();
-
-  User({required this.name, required this.phoneNumber});
-
-  Passenger createPassenger() => Passenger(name, phoneNumber);
-
-  Driver createDriver(Vehicle vehicle) => Driver(name, phoneNumber, vehicle: vehicle);
+  final Vehicle vehicle;
+  List<TravelRoute> routes = [];
+  List<Job> jobs = [];
+  
+  Driver(String name, String phoneNumber, {required this.vehicle}) : super(name: name, phoneNumber: phoneNumber);
 
   @override
-  List<Object> get props => [name, phoneNumber, wallet];
+  List<Object> get props => [name, phoneNumber, wallet, vehicle, routes, jobs];
 
 }

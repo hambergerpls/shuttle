@@ -16,24 +16,17 @@
 // along with Shuttle.  If not, see <http://www.gnu.org/licenses/>.
 
 import 'package:equatable/equatable.dart';
-import 'package:shuttle/features/domain/entities/driver.dart';
-import 'package:shuttle/features/domain/entities/passenger.dart';
-import 'package:shuttle/features/domain/entities/vehicle.dart';
-import 'package:shuttle/features/domain/entities/wallet.dart';
+import 'package:shuttle/features/domain/entities/travel.dart';
 
-class User extends Equatable {
+class Transaction extends Equatable {
 
-  final String name;
-  final String phoneNumber;
-  final Wallet wallet = Wallet();
+  final double amount;
+  final Travel travel;
+  final DateTime datetime;
 
-  User({required this.name, required this.phoneNumber});
-
-  Passenger createPassenger() => Passenger(name, phoneNumber);
-
-  Driver createDriver(Vehicle vehicle) => Driver(name, phoneNumber, vehicle: vehicle);
+  const Transaction({required this.travel, required this.amount, required this.datetime});
 
   @override
-  List<Object> get props => [name, phoneNumber, wallet];
+  List<Object> get props => [travel, amount];
 
 }

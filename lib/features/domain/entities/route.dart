@@ -15,25 +15,11 @@
 // You should have received a copy of the GNU General Public License
 // along with Shuttle.  If not, see <http://www.gnu.org/licenses/>.
 
-import 'package:equatable/equatable.dart';
-import 'package:shuttle/features/domain/entities/driver.dart';
-import 'package:shuttle/features/domain/entities/passenger.dart';
-import 'package:shuttle/features/domain/entities/vehicle.dart';
-import 'package:shuttle/features/domain/entities/wallet.dart';
+import 'package:shuttle/features/domain/entities/stop.dart';
 
-class User extends Equatable {
+class TravelRoute {
 
-  final String name;
-  final String phoneNumber;
-  final Wallet wallet = Wallet();
-
-  User({required this.name, required this.phoneNumber});
-
-  Passenger createPassenger() => Passenger(name, phoneNumber);
-
-  Driver createDriver(Vehicle vehicle) => Driver(name, phoneNumber, vehicle: vehicle);
-
-  @override
-  List<Object> get props => [name, phoneNumber, wallet];
+  List<Map<double,double>> coordinates = [{}];
+  List<Stop> stops = [];
 
 }
